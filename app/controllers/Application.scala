@@ -8,7 +8,7 @@ class Application extends Controller {
     Ok("Hello world")
   }
 
-  def greeting(name: String) = Action {
+  def greeting2(name: String) = Action {
     Ok("Hello " + name)
   }
 
