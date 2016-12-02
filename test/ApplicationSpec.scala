@@ -31,5 +31,19 @@ class ApplicationSpec extends PlaySpecification {
       contentType(home) must beSome.which(_ == "text/html")
       contentAsString(home) must contain("Your new application is ready.")
     }
+
+    "render the visit page with no parameter set" in new WithApplication {
+      val visit = route(app, FakeRequest(GET, "/visit")).get
+      status(visit) must equalTo(OK)
+      contentType(visit) must beSome.which(_ == "text/html")
+      contentAsString(visit) must contain("random user")
+    }
+
+    "render the visit page with option visitor parameter" in new WithApplication {
+      val visit = route(app, FakeRequest(GET, "/visit?visitor=Bob")).get
+      status(visit) must equalTo(OK)
+      contentType(visit) must beSome.which(_ == "text/html")
+      contentAsString(visit) must contain("Bob")
+    }
   }
 }
