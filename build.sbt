@@ -2,16 +2,15 @@ name := "scalaplay01"
 
 version := "1.0"
 
-lazy val `scalaplay01` = (project in file(".")).enablePlugins(PlayScala)
+lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.12.2"
 
 libraryDependencies ++= Seq(
-  jdbc , cache , ws , specs2 % Test,
+  guice, jdbc , ehcache , ws,
+  "com.typesafe.play" %% "play-json" % "2.6.0",
   "org.scalacheck" %% "scalacheck" % "1.13.4" % Test,
-  "org.scalatest" %% "scalatest" % "3.0.1" % Test
+  "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.0" % Test
 )
 
-unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
-
-resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"  
+resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"

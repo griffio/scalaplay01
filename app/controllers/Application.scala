@@ -1,8 +1,11 @@
 package controllers
 
+import javax.inject.Inject
+
 import play.api.mvc._
 
-class Application extends Controller {
+class Application @Inject() (val cc: ControllerComponents,
+                             implicit val assetsFinder: AssetsFinder) extends AbstractController(cc) {
 
   def greeting = Action {
     Ok("Hello")
@@ -32,4 +35,5 @@ class Application extends Controller {
       """.stripMargin
     }.as("text/html")
   }
+
 }

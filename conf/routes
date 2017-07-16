@@ -8,5 +8,6 @@ GET        /greeting            controllers.Application.greeting
 GET        /greetings           controllers.Application.greetings(param: String)
 GET        /visit               controllers.Application.visit(visitor: Option[String])
 
-# Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.at(path="/public", file)
+#assets-configured-path-versioned
+GET /assets/*file           controllers.Assets.at(file)
+#assets-configured-path-versioned

@@ -1,5 +1,5 @@
-@(message: String)
+@(message: String)(implicit assets: AssetsFinder)
 
 @main("Welcome to Play") {
-    @play20.welcome(message)
+    <h3>@message</h3>
 }
